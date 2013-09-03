@@ -5,7 +5,9 @@ use strict;
 use HTTP::Proxy;
 use HTTP::Proxy::BodyFilter::simple;
 
-my $broxy = HTTP::Proxy->new( port => 1337 );
+
+my $port = shift || 1337;
+my $broxy = HTTP::Proxy->new( port => $port );
 
 $broxy->push_filter(
 	response => HTTP::Proxy::BodyFilter::simple->new(
